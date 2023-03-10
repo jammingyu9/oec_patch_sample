@@ -19,6 +19,10 @@ int main(int argc, char* argv[])
     // get parent pid for signal response
     pid_t ppid = getppid();
     std::cout << "Parent process ID = " << ppid << std::endl;
+    if (ppid == 1) {
+        std::cout << "Exiting because ppid is 1 " << std::endl;
+        std::terminate();
+    }
     
     // register handlers
     std::unique_ptr<SignalHandler> sh;
