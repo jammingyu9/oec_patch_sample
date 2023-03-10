@@ -12,7 +12,8 @@
 int main(int argc, char* argv[])
 {
     // parse config file
-    std::unique_ptr<ConfigParser> cp = new ConfigParser();
+    std::unique_ptr<ConfigParser> cp;
+    cp.reset(new ConfigParser());
     cp->parseConfig();
 
     // get parent pid for signal response
@@ -20,11 +21,12 @@ int main(int argc, char* argv[])
     std::cout << "Parent process ID = " << ppid << std::endl;
     
     // register handlers
-    std::unique_ptr<SignalHandler> sh = new SignalHandler(ppid,
-                                                          cp->startRes(),
-                                                          cp->wrapUpResult(),
-                                                          cp->patchReadyResult(),
-                                                          cp->terminateResult());
+    std::unique_ptr<SignalHandler> sh;
+    sh.reset(new SignalHandler(ppid,
+                               cp->startResult(),
+                               cp->wrapUpResult(),
+                               cp->patchReadyResult(),
+                               cp->terminateResult()));
 
     // send start result
     sh->sendStartResult();

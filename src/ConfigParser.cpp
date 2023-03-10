@@ -1,17 +1,18 @@
 #include "ConfigParser.hpp"
 
+#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <iterator>
 #include <exception>
 
 bool ConfigParser::parseConfig()
 {
     try {
-        std::ifstream file("oec.config")
-        std::istringstream issFile;
-        
-        issFile << file.rdbuf();
+        std::ifstream file("oec.config");
+        std::stringstream issFile;
+	issFile << file.rdbuf();
         file.close();
 
         std::string line;
@@ -40,5 +41,5 @@ bool ConfigParser::parseConfig()
         std::cerr << "exception while parsing config: " << exp.what() << std::endl; 
         std::terminate();
     }
-
+    return true;
 }

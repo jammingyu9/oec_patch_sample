@@ -11,17 +11,17 @@ public:
                   bool terminateRes);
     virtual ~SignalHandler() {};
 
-    void handleSigInt();
-    void handleSigTerm();
-    void handleSigUsr1();
+    static void handleSigInt(int);
+    static void handleSigTerm(int);
+    static void handleSigUsr1(int);
     void sendStartResult();
 
 private:
-    int ppid;
-    bool startResult = true;
-    bool wrapUpResult = true;
-    bool patchReadyResult = true;
-    bool terminateResult = true;
+    static int ppid;
+    static bool startResult;
+    static bool wrapUpResult;
+    static bool patchReadyResult;
+    static bool terminateResult;
 };
 
 #endif // SEMITS_SIGNAL_HANDLER_HPP

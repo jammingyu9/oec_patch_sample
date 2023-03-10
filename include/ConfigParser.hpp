@@ -9,7 +9,7 @@ public:
 
     bool parseConfig();
 
-    bool startRes() { return startRes; }
+    bool startResult() { return startRes; }
     bool wrapUpResult() { return wrapUpRes; }
     bool patchReadyResult() { return patchReadyRes; }
     bool terminateResult() { return terminateRes; }
