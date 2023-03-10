@@ -1,6 +1,6 @@
 # Build & Run docker container
 ```
-$ cd docker
+$ cd oec_patch_sample
 $ docker build -t oec_builder_image .
 $ docker run -it --name oec_builder oec_builder_image /bin/bash
 ```
